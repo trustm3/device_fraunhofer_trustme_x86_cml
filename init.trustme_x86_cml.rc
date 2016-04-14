@@ -1,0 +1,19 @@
+import /init.trustme_generic.rc
+
+on init
+    loglevel 7 # this *only* affects init, not ueventd etc.!
+
+on load_all_props_action
+   setprop service.adb.tcp.port 55550
+
+on fs
+   mount_all fstab.x86
+   mount ext4 /dev/block/sda /data
+
+on post-fs-data
+   mkdir /data/cml/communication 0755 root root
+   mount tmpfs tmpfs /data/cml/communication mode=0755
+   mount tmpfs tmpfs /tmp mode=0755
+
+on boot
+   ifup eth0
