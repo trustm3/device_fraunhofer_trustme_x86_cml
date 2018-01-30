@@ -21,18 +21,14 @@
 # Fraunhofer AISEC <trustme@aisec.fraunhofer.de>
 #
 
-#ifeq ($(TARGET_PREBUILT_KERNEL),)
-#LOCAL_KERNEL := out-trustme/kernel/hammerhead/obj/arch/arm/boot/zImage-dtb
-#else
-#LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-#endif
-#
-#PRODUCT_COPY_FILES := \
-#	$(LOCAL_KERNEL):kernel
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := out-trustme/kernel/x86/obj/arch/x86_64/boot/bzImage
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
 
-LOCAL_KERNEL := prebuilts/qemu-kernel/x86/kernel-qemu
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+PRODUCT_COPY_FILES := \
+	$(LOCAL_KERNEL):kernel
 
 PRODUCT_NAME := trustme_x86_cml
 PRODUCT_DEVICE := trustme_x86_cml
