@@ -57,4 +57,3 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 BOARD_SEPOLICY_DIRS += build/target/board/generic/sepolicy
 BOARD_SEPOLICY_DIRS += build/target/board/generic_x86/sepolicy
 
-TARGET_USES_LOGD := false

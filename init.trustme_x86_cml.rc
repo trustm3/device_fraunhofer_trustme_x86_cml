@@ -3,8 +3,9 @@ import /init.trustme_generic.rc
 on init
     loglevel 7 # this *only* affects init, not ueventd etc.!
 
-on load_all_props_action
+on load_system_props_action
    setprop service.adb.tcp.port 55550
+   setprop service.adb.root 1
 
 on fs
    mount_all fstab.x86
@@ -17,3 +18,10 @@ on post-fs-data
 
 on boot
    ifup eth0
+
+# overwrite adb service of init.trustme_generic.rc to allow selinux disabled
+service adbd /sbin/adbd
+    class core
+    socket adbd stream 660 system system
+    disabled
+    seclabel u:r:adbd:s0
