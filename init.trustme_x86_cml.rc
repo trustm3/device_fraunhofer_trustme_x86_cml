@@ -1,4 +1,5 @@
 import /init.trustme_generic.rc
+import /init.trustme_generic_x.rc
 
 on init
     loglevel 7 # this *only* affects init, not ueventd etc.!
